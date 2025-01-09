@@ -1,0 +1,35 @@
+Spring related links
+
+https://www.google.com/search?q=spring+application+sample+project+application&rlz=1C1CHBD_enIN1038IN1038&ei=poXbY-y4CeCJ4-EP5-2zqA4&ved=0ahUKEwjso8qgxvb8AhXgxDgGHef2DOUQ4dUDCBA&uact=5&oq=spring+application+sample+project+application&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIFCCEQoAEyBQghEKABOgoIABBHENYEELADSgQIQRgASgQIRhgAUJ0jWJ0jYP41aAFwAXgAgAGNAogBjQKSAQMyLTGYAQCgAQHIAQjAAQE&sclient=gws-wiz-serp#ip=1
+https://www.javatpoint.com/spring-initializr
+https://www.digitalocean.com/community/tutorials/spring-mvc-example
+https://docs.spring.io/spring-boot/docs/1.1.4.RELEASE/reference/html/getting-started-first-application.html
+https://www.springboottutorial.com/spring-boot-projects-with-code-examples
+https://www.springboottutorial.com/spring-boot-exception-handling-for-rest-services
+https://www.springboottutorial.com/spring-boot-crud-rest-service-with-jpa-hibernate
+
+
+
+Hands on the project
+
+https://www.javaguides.net/2018/10/free-open-source-projects-using-spring-boot.html
+
+https://www.youtube.com/playlist?list=PLGRDMO4rOGcNLnW1L2vgsExTBg-VPoZHr
+
+https://www.javadevjournal.com/spring-boot/creating-a-web-application-with-spring-boot/
+https://java2blog.com/spring-boot-web-application-example/#Project_structure
+
+
+
+create dynamic project for spring 
+
+https://java2blog.com/how-to-create-dynamic-web-project-using/
+
+deploy tomcat
+
+https://java2blog.com/how-to-configure-apache-tomcat-in/
+
+
+live hands on coding on spring
+
+https://www.youtube.com/watch?v=VR1zoNomG3w&ab_channel=JavaGuides

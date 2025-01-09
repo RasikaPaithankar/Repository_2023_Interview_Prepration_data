@@ -1,0 +1,9 @@
+Java Coding questions
+
+https://www.google.com/search?q=java+coding+interview+questions&rlz=1C1CHBD_enIN1038IN1038&oq=Java+coding+interview+questions&aqs=chrome.0.0i512l10.5638j0j7&sourceid=chrome&ie=UTF-8
+https://www.digitalocean.com/community/tutorials/java-programming-interview-questions
+https://www.interviewbit.com/java-programming-interview-questions/
+https://www.simplilearn.com/tutorials/java-tutorial/java-interview-questions
+https://www.geeksforgeeks.org/how-to-sort-an-array-in-a-single-loop/
+https://www.java67.com/2018/04/21-string-programming-and-coding-interview-questions-answers.html
+https://www.geeksforgeeks.org/top-50-string-coding-problems-for-interviews/
