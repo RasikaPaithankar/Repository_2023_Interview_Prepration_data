@@ -1,0 +1,22 @@
+package com.java.fortytwolabs.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.java.fortytwolabs.pojo.Student;
+
+@Controller
+public class StudentController {
+
+	
+	@RequestMapping("/")
+	public ModelAndView getStudent() {
+		Student s = new Student();
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("getData.htm");
+		modelAndView.addObject(s);
+		
+		//return "getData.htm";
+	}
+}

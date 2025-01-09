@@ -1,0 +1,1 @@
+INDEX VERSION 1.4+C:\Users\GS-2223\Documents\eclipse ws\Spring Data Access\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes

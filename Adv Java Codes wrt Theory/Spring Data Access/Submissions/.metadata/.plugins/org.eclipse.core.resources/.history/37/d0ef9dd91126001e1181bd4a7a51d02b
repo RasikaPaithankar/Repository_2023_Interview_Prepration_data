@@ -1,0 +1,11 @@
+package com.java.fortytwoLabs.controller;
+
+@Controller
+public class StudentController {
+
+	public void getStudents() 
+	{
+		System.out.println("List of students");
+		
+	}
+}

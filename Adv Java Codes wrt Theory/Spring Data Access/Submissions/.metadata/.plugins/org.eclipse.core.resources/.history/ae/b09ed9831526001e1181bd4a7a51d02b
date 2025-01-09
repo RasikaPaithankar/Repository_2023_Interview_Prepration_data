@@ -1,0 +1,18 @@
+package com.java.fortytwoLabs.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class StudentController {
+
+	@RequestMapping("get")
+	public ModelAndView getStudent() {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.setView("list.jsp");
+		
+		return modelAndView;
+	}
+}

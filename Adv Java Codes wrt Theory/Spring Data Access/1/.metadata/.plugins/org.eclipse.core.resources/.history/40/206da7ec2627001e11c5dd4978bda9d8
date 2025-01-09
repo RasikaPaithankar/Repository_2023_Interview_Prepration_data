@@ -1,0 +1,12 @@
+package com.assignment.StudentDetails.Entity;
+
+public class Subject {
+	
+	private String subName;
+	private Integer marks;
+	
+	public Subject() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

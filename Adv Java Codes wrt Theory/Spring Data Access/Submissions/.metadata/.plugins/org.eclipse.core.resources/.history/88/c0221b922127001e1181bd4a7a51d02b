@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+		<script type="text/javascript">var myVar = "${model.result}";</script>
+</head>
+<body>
+	
+	 <button type="button" style= "height: 30px; width: 153px" onclick="func('${result}');">click</button>
+	
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+package com.java.fortytwoLabs.controller;
+
+@Controller
+public class StudentController {
+
+}

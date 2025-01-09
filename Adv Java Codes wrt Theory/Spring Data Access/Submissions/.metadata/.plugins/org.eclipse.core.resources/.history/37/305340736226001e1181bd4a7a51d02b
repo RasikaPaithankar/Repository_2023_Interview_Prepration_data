@@ -1,0 +1,6 @@
+package com.java.fortytwolabs.pojo;
+
+public class Subject {
+	private Integer maths;
+	private Integer physics;
+}

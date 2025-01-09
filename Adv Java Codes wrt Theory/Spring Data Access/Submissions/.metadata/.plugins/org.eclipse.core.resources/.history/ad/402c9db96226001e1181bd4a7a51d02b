@@ -1,0 +1,22 @@
+package com.java.fortytwolabs.pojo;
+
+import java.util.ArrayList;
+
+public class Student {
+	private String name;
+    private Integer age;
+    private String address;
+    ArrayList<Subject> subjects;
+    public Student() {
+		// TODO Auto-generated constructor stub
+	}
+	public Student(String name, Integer age, String address, ArrayList<Subject> subjects) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.address = address;
+		this.subjects = subjects;
+	}
+    
+    
+}

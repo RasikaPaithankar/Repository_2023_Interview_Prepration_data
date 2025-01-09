@@ -1,0 +1,11 @@
+INDEX VERSION 1.131
+C:\Users\GS-2223\Documents\eclipse ws\Spring Data Access\Submissions\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2069069749.index
+\StudentDetailsOld\src\main\java
+C:\Users\GS-2223\Documents\eclipse ws\Spring Data Access\Submissions\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3446515715.index
+\StudentDetails\src\main\resources
+C:\Users\GS-2223\Documents\eclipse ws\Spring Data Access\Submissions\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2911996971.index
+\StudDetails\src\main\resources
+C:\Users\GS-2223\Documents\eclipse ws\Spring Data Access\Submissions\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1625176803.index
+\Assisgnment\src\main\resources
+C:\Users\GS-2223\Documents\eclipse ws\Spring Data Access\Submissions\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3036132259.index
+\SDetails\src\main\resources

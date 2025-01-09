@@ -1,0 +1,15 @@
+package com.java.fortytwolabs.pojo;
+
+public class Subject {
+	private Integer maths;
+	private Integer physics;
+	public Subject() {
+		// TODO Auto-generated constructor stub
+	}
+	public Subject(Integer maths, Integer physics) {
+		super();
+		this.maths = maths;
+		this.physics = physics;
+	}
+	
+}

@@ -1,0 +1,14 @@
+package com.java.fortytwoLabs.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class StudentController {
+
+	@RequestMapping("/get")
+	public void getStudents() 
+	{
+		System.out.println("List of students");
+		
+	}
+}

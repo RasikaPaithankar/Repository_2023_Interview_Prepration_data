@@ -1,0 +1,10 @@
+<html>
+<body>
+
+<form action="/get">
+	<button name="Click"></button>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+	http://www.springframework.org/schema/context 
+	https://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="com.demo.spring.springjdcdemo"></context:component-scan>
+	
+	<bean id="driverSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost/cops_schema"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="driverSource"></property>
+	</bean>
+
+	
+	<bean id="copsdaoimp" class="com.demo.spring.springjdcdemo.daoImplmentation.CopsDaoImp">
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+	</bean>
+	
+	
+	<bean id="cops" class="com.demo.spring.springjdcdemo.pojo.Cops">
+		<property name="id" value="1"></property>
+		<property name="name" value="Test"></property>
+	</bean>
+	
+	<bean id="cops1" class="com.demo.spring.springjdcdemo.pojo.Cops">
+		<property name="id" value="2"></property>
+		<property name="name" value="Test2"></property>
+	</bean>
+	
+</beans>

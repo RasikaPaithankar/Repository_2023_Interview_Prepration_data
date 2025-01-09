@@ -1,0 +1,13 @@
+package com.java.fortytwolabs.pojo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Student {
+	private String name;
+    private Integer age;
+    private String address;
+    ArrayList<Subject> subjects;
+    
+    
+}

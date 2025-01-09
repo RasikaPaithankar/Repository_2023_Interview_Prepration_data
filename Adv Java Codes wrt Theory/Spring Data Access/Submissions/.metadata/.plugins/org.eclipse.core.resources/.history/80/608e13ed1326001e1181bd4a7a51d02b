@@ -1,0 +1,12 @@
+package com.java.fortytwoLabs.controller;
+
+import org.springframework.web.servlet.ModelAndView;
+
+@RestController
+public class StudentController {
+
+	@Path("/get")
+	public String getStudent() {
+		
+	}
+}

@@ -1,0 +1,12 @@
+package com.java.fortytwolabs;
+
+import org.springframework.stereotype.Controller;
+
+
+public class StudentController {
+
+	
+	public void add() {
+		
+	}
+}

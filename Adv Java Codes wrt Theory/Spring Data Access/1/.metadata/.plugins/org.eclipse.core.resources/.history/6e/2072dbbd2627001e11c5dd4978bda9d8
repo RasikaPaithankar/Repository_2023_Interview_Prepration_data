@@ -1,0 +1,8 @@
+package com.assignment.StudentDetails.Entity;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class Student {
+
+}

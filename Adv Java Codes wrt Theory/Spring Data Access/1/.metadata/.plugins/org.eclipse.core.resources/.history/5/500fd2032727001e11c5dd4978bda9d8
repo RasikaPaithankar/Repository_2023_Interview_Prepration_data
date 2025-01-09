@@ -1,0 +1,15 @@
+package com.assignment.StudentDetails.Entity;
+
+import java.util.List;
+
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class Student {
+
+	private String name;
+	private Integer age;
+	private String address;
+	private List<Subject> subject;
+}

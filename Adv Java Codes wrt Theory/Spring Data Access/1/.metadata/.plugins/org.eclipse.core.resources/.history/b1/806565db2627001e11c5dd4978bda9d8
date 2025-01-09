@@ -1,0 +1,5 @@
+package com.assignment.StudentDetails.Entity;
+
+public class Subject {
+
+}
