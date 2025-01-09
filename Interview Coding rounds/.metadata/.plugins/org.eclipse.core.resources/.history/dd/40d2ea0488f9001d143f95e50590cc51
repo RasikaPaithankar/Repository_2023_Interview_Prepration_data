@@ -1,0 +1,20 @@
+package com.test;
+
+public class FindStringSubString {
+
+	public static void main(String[] args) 
+	{
+		String sr = "Swar";
+		System.out.println(sr.substring(0, 1));
+		findSubString(sr);
+	}
+
+	private static void findSubString(String sr) 
+	{
+		for(int i = 1; i < sr.length ; i++) 
+		{
+			System.out.println(sr.substring(i, i+1));
+		}
+	}
+
+}

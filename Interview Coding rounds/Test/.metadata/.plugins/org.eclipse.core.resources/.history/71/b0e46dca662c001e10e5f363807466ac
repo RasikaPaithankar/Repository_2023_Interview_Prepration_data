@@ -1,0 +1,32 @@
+package com.data.demo;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.stream.Collector;
+
+//{11,34,33,22,90,45,88}
+
+public class Test1 {
+
+	public static void main(String[] args) {	
+		ArrayList<Integer> l = new ArrayList<Integer>();
+		l.add(11);
+		l.add(34);
+		l.add(33);
+		l.add(22);
+		l.add(90);
+		l.add(45);
+		l.add(88);
+		
+		l.stream().filter(e -> e % 11 ==0 ).forEach(System.out::println);
+		
+//		l.stream().filter(e -> e % 11 ==0 ).collect(Collections.asList());
+		
+		
+		int sum=0;
+		l.stream().sun(e -> e + sum ).forEach(System.out::println);
+	}
+
+}

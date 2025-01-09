@@ -1,0 +1,40 @@
+package com.test;
+
+public class Test {
+
+	public static void main(String[] args) {
+		int x = -4;
+		System.out.print(x>>1);
+		System.out.print(" And ");
+		int y = 4;
+		System.out.print(y>>2);
+		System.out.println("**********");
+		int[] a = new int[10];
+		byte[] b = new byte[10];
+		char[] c = new char[10];
+		double[] d = new double[10];
+		
+		System.out.println(a[0] + " " + b[0]+ " "+ c[0] + " "+d[0]);
+		
+		System.out.println("**********");
+		
+		int e = 96;
+		System.out.println(e>>4);
+		System.out.println(e>>>4);
+		
+		System.out.println("**********");
+		
+		System.out.println(1 + 
+				2==+
+				3+ 
+				+
+				+5);
+		
+		System.out.println("**********");
+		
+		int p = 5;
+		System.out.println("Hello");
+		5<6?5:6;
+	}
+
+}

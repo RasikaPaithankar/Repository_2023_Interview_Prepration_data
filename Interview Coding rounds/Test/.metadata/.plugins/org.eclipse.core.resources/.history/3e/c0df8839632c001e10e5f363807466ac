@@ -1,0 +1,14 @@
+package com.data.demo;
+
+import java.util.ArrayList;
+
+//{11,34,33,22,90,45,88}
+
+public class Test1 {
+
+	public static void main(String[] args) {	
+		ArrayList<Integer> l = new ArrayList<Integer>()
+
+	}
+
+}

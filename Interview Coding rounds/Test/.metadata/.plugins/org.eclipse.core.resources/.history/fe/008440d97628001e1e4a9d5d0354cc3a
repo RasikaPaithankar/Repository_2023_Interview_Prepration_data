@@ -1,0 +1,7 @@
+package com.test;
+
+public class A {
+	private static int t1 = 1;
+	private static int t2 = 2;
+
+}

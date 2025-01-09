@@ -1,0 +1,32 @@
+package com.test;
+
+import java.util.regex.Matcher;
+
+//whatIsYourName -> WHAT_IS_YOUR_NAME 
+
+
+public class SnakeCase {
+
+	public static void main(String[] args) {
+
+		String s = "whatIsYourName";
+		
+		
+		
+		//char[] ch = s.toCharArray();
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0; i < s.length(); i++) {
+			Character c = new Character(s.charAt(i));
+			
+			
+//			if() {
+//				append('_');
+//				sb.append(ch[i]);
+//			} else {
+//				sb.append(ch[i]);
+//			}
+			
+		}
+	}
+
+}

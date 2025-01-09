@@ -1,0 +1,8 @@
+package com.demo;
+
+public class Employee {
+
+	Integer id;
+	String name;
+	Integer salary;
+}

@@ -1,0 +1,17 @@
+package com.data.demo;
+
+import java.util.ArrayList;
+
+public class Test2 {
+
+	public static void main(String[] args) {
+		ArrayList<String> list=new ArrayList<String>();    
+	      list.add("Sachin Tendulkar");    
+	      list.add("Mahendra Dhoni");    
+	      list.add("Rohit Sharma");    
+	      list.add("Virat Kohli");
+	      
+	    list.stream().filter(e -> e.compareTo(e)).forEach(Syste.out::print);
+	}
+
+}

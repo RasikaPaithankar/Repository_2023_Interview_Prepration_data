@@ -1,0 +1,18 @@
+package com.test;
+
+public class ReverseString {
+
+	public static void main(String[] args) {
+		String str = "Reverse";
+		StringBuilder sb = new StringBuilder(str);
+		
+		sb = sb.reverse(); 
+		System.out.println(sb);
+		System.out.println(str);
+		
+		String s = "ReverseMeUsingCharAtMethod";
+		
+		
+	}
+
+}

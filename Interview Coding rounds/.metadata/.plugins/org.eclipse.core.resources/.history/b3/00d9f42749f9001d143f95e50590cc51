@@ -1,0 +1,25 @@
+package com.test;
+
+public class IsAnagramUsingCount {
+
+	public static void main(String[] args) {
+		String word = "LiveToCode";
+		String anagram = "LiveCode To";
+		Boolean result = isAnagram(word, anagram);
+		
+		System.out.println(result);
+	}
+
+	public boolean isAnagram (String word, String anagram) {
+		if(word.length() != anagram.length()) {
+			return false;
+		}
+		
+		int count[] = new int[256];
+		for(int i = 0; i <= word.length() - 1; i++) {
+			System.out.println(word.charAt(i));
+		}
+		
+		return true;
+	}
+}

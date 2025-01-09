@@ -1,0 +1,13 @@
+package com.test;
+
+
+//whatIsYourName -> WHAT_IS_YOUR_NAME 
+
+
+public class SnakeCase {
+
+	public static void main(String[] args) {
+
+	}
+
+}

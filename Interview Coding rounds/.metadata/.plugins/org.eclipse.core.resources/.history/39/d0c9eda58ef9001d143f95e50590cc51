@@ -1,0 +1,13 @@
+package com.test;
+
+public class FindLargestAndSmallestNumber {
+
+	public static void main(String[] args) {
+		int[] arr = {12,56,76,89,6,100,343,21,234};
+		
+		int smallest = arr[0];
+		int largest = arr[0];
+		
+	}
+
+}

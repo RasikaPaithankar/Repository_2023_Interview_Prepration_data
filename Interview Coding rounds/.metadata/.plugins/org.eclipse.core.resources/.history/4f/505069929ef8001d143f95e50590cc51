@@ -1,0 +1,16 @@
+package com.test;
+
+public class IsStringAnagram {
+
+	String word = "LiveToCode";
+	String anagram = "LiveCodeTo";
+	
+	public static void main(String[] args) {
+		
+	}
+	
+	public static boolean isAnagramUsingStringMethod() {
+		
+	}
+
+}

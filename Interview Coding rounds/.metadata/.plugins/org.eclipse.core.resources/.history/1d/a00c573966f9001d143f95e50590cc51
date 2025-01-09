@@ -1,0 +1,15 @@
+package com.test;
+
+public class IsStringHasAllUniqueCharchtersUsingStringMethods {
+
+	public static void main(String[] args) {
+		String sr = "Swara";
+		boolean result = isAllUnique(sr);
+	}
+
+	private static boolean isAllUnique(String sr) {
+		
+		return false;
+	}
+
+}

@@ -1,0 +1,15 @@
+package com.test;
+
+public class A {
+	private static int t1 = 1;
+	private static int t2 = 2;
+
+	public static class inner {
+		private static int t3 = 3;
+		
+		private static int sum() {
+			return (t1+t3);
+		}
+		
+	}
+}

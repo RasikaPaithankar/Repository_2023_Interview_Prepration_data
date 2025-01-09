@@ -1,0 +1,14 @@
+package com.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test {
+
+	public static void main(String[] args) {
+		List<String> l = new ArrayList<String, Integer>();
+		
+		ArrayList<String, String> al = new ArrayList<String, String>();
+	}
+
+}

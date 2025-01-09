@@ -1,0 +1,17 @@
+package com.test;
+
+public class IsStringAnagramUsingSortMethod {
+
+	public static void main(String[] args) {
+		String word = "LiveToCode";
+		String anagram = "LiveCodeTo";
+		Boolean result = isStringAnagramUsingSortMethod(word, anagram);
+		System.out.println(result);
+	}
+
+	public static boolean isStringAnagramUsingSortMethod(String word, String anagram) 
+	{
+		
+		return true;
+	}
+}

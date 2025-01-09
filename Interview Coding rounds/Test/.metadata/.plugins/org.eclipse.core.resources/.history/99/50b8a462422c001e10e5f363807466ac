@@ -1,0 +1,27 @@
+package com.data.demo;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+
+public class Test2 {
+
+	public static void main(String[] args) {
+		ArrayList<String> list=new ArrayList<String>();    
+	      list.add("Sachin Tendulkar");    
+	      list.add("Mahendra Dhoni");    
+	      list.add("Rohit Sharma");    
+	      list.add("Virat Kohli");
+	      
+	    list.stream().filter().forEach(System.out::print);
+	    
+	    Comparator<String> c = new Comparator<String>() {
+			
+			@Override
+			public int compare(String o1, String o2) {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+		};
+	}
+
+}

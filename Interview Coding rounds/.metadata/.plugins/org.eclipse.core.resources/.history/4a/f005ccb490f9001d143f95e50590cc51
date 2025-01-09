@@ -1,0 +1,16 @@
+package com.test;
+
+public class FindMissingNumber {
+
+	public static void main(String[] args) {
+		int[] arr = {7,5,6,1,4,2};
+		int missingNum = findMissingNum(arr);
+	}
+
+	private static int findMissingNum(int[] arr) {
+		int n = arr.length;
+		
+		return 0;
+	}
+
+}

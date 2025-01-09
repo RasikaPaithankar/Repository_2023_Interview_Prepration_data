@@ -1,0 +1,27 @@
+package com.test;
+
+public class StringSizeWithoutInbuiltFunction {
+
+	public static void main(String[] args) {
+		String sr = "Swar";
+		
+		approach1(sr);
+				
+	}
+
+	private static void approach1(String sr) {
+		try 
+		{
+			
+			int count = 0;
+			char arr[] = sr.toCharArray();
+			for (char c : arr) {
+				System.out.print(c);
+				count++;
+			}
+			System.out.println(" " +count);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+	}
+}

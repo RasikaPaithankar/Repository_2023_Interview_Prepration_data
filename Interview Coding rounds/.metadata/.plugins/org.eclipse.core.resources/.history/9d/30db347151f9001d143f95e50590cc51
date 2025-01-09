@@ -1,0 +1,17 @@
+package com.test;
+
+import java.util.HashSet;
+
+public class IsStringHasAllUniqueCharchters {
+
+	public static void main(String[] args) {
+		String sr = "Swar";
+		boolean result = isAllUnique(sr);
+	}
+
+	private static boolean isAllUnique(String sr) {
+		HashSet<String> ht = new HashSet<String>();
+		return false;
+	}
+
+}

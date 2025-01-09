@@ -1,0 +1,19 @@
+package com.test;
+
+public class FindDuplicatesFromString {
+
+	public static void main(String[] args) {
+		String sr = "Repetative";
+		findDuplicate(sr);
+		
+	}
+
+	private static void findDuplicate(String sr) 
+	{
+		for(int i = 0; i <= sr.length()-1 ; i++) 
+		{
+			
+		}
+	}
+
+}

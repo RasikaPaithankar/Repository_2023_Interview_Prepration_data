@@ -1,0 +1,22 @@
+package com.test;
+
+public class ReverseString {
+
+	public static void main(String[] args) {
+		String str = "Reverse";
+		StringBuilder sb = new StringBuilder(str);
+		
+		sb = sb.reverse(); 
+		System.out.println(sb);
+		System.out.println(str);
+		
+		String s = "ReverseMeUsingCharAtMethod";
+		String r = "" ;
+		for(int i = s.length() - 1; i >= 0 ; i-- ) {
+			r = r + s.charAt(i);
+		}
+		
+		System.out.println(r);
+	}
+
+}

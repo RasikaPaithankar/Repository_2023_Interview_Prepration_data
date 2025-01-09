@@ -1,0 +1,25 @@
+package com.test;
+
+public class IsStringAnagram {
+
+	String word = "LiveToCode";
+	String anagram = "LiveCodeTo";
+	
+	public static void main(String[] args) {
+		
+	}
+	
+	public static boolean isAnagramUsingStringMethod(String word, String anagram) {
+		if(word.length() != anagram.length())
+			return false;
+		for(int i = 0; i <= word.length() - 1; i++) 
+		{
+			char c = word.charAt(i);
+			int index = anagram.indexOf(c);
+			
+			if()
+		}
+		return true;
+	}
+
+}

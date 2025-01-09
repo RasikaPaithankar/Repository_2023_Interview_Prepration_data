@@ -1,0 +1,25 @@
+package com.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test {
+
+	public static void main(String[] args) {
+		List<Integer> l = new ArrayList<Integer>();
+		l.add(1);
+		l.add(6);
+		l.add(3);
+		l.add(4);
+		
+		
+		int max = l[0];
+		for (Integer integer : l) {
+			System.out.println(integer);
+		}
+		
+		
+		
+	}
+
+}

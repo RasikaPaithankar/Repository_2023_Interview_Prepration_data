@@ -1,0 +1,41 @@
+package com.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Test {
+
+	public static void main(String[] args) {
+		ArrayList<Integer> l = new ArrayList<Integer>();
+		l.add(1);
+		l.add(6);
+		l.add(3);
+		l.add(4);
+		
+		
+		int max = l.get(0);
+		for(int i = 0; i< l.size(); i++) {
+			
+			for(int j = 1; j< l.size(); j++) {
+				if(max < l.get(j)) {
+					max = l.get(j);
+				}
+			}
+		}	
+		
+		int secondMax = l.get(0);
+		for(int k = 0; k < l.size(); k++) {
+			for(int a = 1; a< l.size() ;a++) {
+				if(l.get(k) < max) {
+					secondMax = l.get(a);
+				}
+			}
+		}
+	
+		System.out.println(secondMax);
+		
+		//System.out.println(secondMax);
+		
+	}
+
+}
