@@ -1,0 +1,1264 @@
+Git Commands
+
+git log ==> to check last commits 
+
+git log -n 5 ==> shows last 5 commits
+
+git log --since=2019-01-01 ==> shows commits since 1 jan 2019
+
+git log --until=2022-01-01 ==> shows commits until 1 jan 2022
+
+git log --author="rdindorkar" ==> shows commits of author(no need of full name)
+
+git log --grep="commit msg string" ==> shows commits as per commit msg string
+----------------------------------------------------------------------------------------------------------------------------------
+By not creating a directory for the repository and changing into that directory before typing git init, 
+all the home directory files and any sub-directories created will need to be included in an ignore list for Git. 
+Any new directory created in the home directory going forward will need to be added to that list, as well.
+
+----------------------------------------------------------------------------------------------------------------------------------
+git status ==> status of file changes
+
+#untracked files ==> git repository is unaware about the changes of the files and git is not able to track these files changes(in short word its new files)
+
+----------------------------------------------------------------------------------------------------------------------------------
+git add . ==> add all from the working directory
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Edit files 
+----------
+git add editedFile ==> add the changes to repository
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+git diff ==> shows all changes 
+
+git diff changedfilename ==> shows particular file changes 
+----------------------------------------------------------------------------------------------------------------------------------
+
+view only staged changes(after git add)
+
+git diff --staged ==> can view staged changes i.e., changes which are added but not commited
+
+git diff --cached ==> same as git diff --staged
+
+----------------------------------------------------------------------------------------------------------------------------------
+git rm deletedfiles ==> deleted the file 
+
+git rm --cached filenamewanttodelete ==> remove from the staging directory 
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+git mv sourcefile destinationfile ==> use to rename the file using mv command(same command can use to move the file, only path will change)
+
+git mv sourcefile path/destinationfile ==> move file to new location or path
+
+----------------------------------------------------------------------------------------------------------------------------------
+git diff --color-words ==> shows only modified words using diff command
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+git commit -a ==> commit all the changes (a stand for a, m for message) 
+
+e.g., git commit -am "approriate message"
+
+# it does not add new (untracked files)
+
+git commit --all ==> commit all the changes
+
+# it does not add new (untracked files)
+
+----------------------------------------------------------------------------------------------------------------------------------
+git show commitId(SHA) ==> it shows diff which is commited 
+
+git show commitId(SHA) --color-words ==> shows in diff colors which words are changed 
+----------------------------------------------------------------------------------------------------------------------------------
+
+compare commits 
+---------------
+
+git diff olderstCommit..endingCommit ==> compare two different commits
+
+e.g., git diff wadu738df...98w3njakd --color-words
+
+e.g., git diff wadu738df...HEAD --color-words (can compare with head as well instead of SHA)
+
+----------------------------------------------------------------------------------------------------------------------------------
+Multiline commit
+-----------------
+
+git commit -a (Enter button) ==> this command will open the commit message editor file, need to enter the commit message save that file and close 
+								 it will commit now.
+								 
+----------------------------------------------------------------------------------------------------------------------------------
+
+Atomic commits --> small commits 
+
+related files should go in one commit and unrelated files should go in another commit, it helps to other to check changes for particular files
+
+Each page will require a minimum of one commit. 
+Multiple pages plus deleted pages would require several atomic commits in order to use best practices.
+----------------------------------------------------------------------------------------------------------------------------------
+
+Q. Why is using a sandbox repository helpful?
+
+The purpose of a sandbox is to serve as a space for trial and error, to learn about a behavior or to see if a series of commands will result in the needed or expected outcome.
+----------------------------------------------------------------------------------------------------------------------------------
+
+undo changes of working directory(if dont want to commit)
+---------------------------------
+
+git checkout -- filename ==> to discard the changes in working directory 
+
+# if want to discard all files then use command --> (git checkout -- .)
+
+undo changes of stage files(after adding files to staged) 
+-----------------------------
+
+git reset HEAD filenamewhichwasStaged ==> discard changes of staged files
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+amend previous commit 
+
+git commit --amend -m "commit msg"
+
+amend with commit take or bring back previous commit to staging --> add whatever staging it(already added files)--> and recommit it.
+--> and generating new SHA
+
+Q. Which use of git commit --amend is not allowed?
+
+==>changing the contents of HEAD's parent commit
+
+The --amend option isn't allowed for older commits because the entire commit will change, 
+which threatens the integrity of the data and ancestry.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+retrieve old version of files using commit 
+
+git commit SHA -- filename (-- stand for current branch)
+
+# this command puts commit in staging directory(not in working directory)
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Revert Commit
+-------------
+
+git revert SHA ==> revert the commit of particular SHA  								 
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Remove untracked files 
+-----------------------
+
+git clean -n ==> would remove but not actually remove for us
+
+git clean -f ==> forcefully remove the files 
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+ignore files
+
+./gitignore file 
+
+add files or folder which you want to ignore 
+e.g., add.java
+
+add files or folder which you dont want to ignore 
+e.g., !mainClass.java
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+keep track of empty folder 
+
+add .gitkeep file in the folder, git start tracking empty folder
+
+or 
+
+touch temp/.gitkepp ==> touch the file create gitkeep file if not existed, if existed then edited time will modify.
+
+----------------------------------------------------------------------------------------------------------------------------------
+####################################
+#Git: Branches, Merges, and Remotes#
+####################################
+
+*Tree-ish (tree-- we can say files, directories, commit, tag etc)
+----------------------------------------------------------------------------------------------------------------------------------
+
+Ancestry 
+----------
+Parent commit 		Grandparent Commit		GreatGrandParents
+
+SHA^				SHA^^					SHA^^^
+
+HEAD^				HEAD^^					HEAD^^^
+
+master^				master^^				master^^^
+
+HEAD~/HEAD~1		HEAD~2					HEAD~3 
+git show HEAD~1		git show HEAD~2			git show HEAD~3
+
+
+4th commit(HEAD--> master)
+
+3rd commit(parent of 4th commit)
+
+2nd commit(parent of 3rd commit)(Grandparent of 4th commit)
+
+1st commit(parent of 2nd commit)(Grandparent of 3rd commit)(GreatGrandParents of 4th commit)
+
+----------------------------------------------------------------------------------------------------------------------------------
+Tree Listing
+------------
+
+git ls-tree HEAD ==> shows list of files/directories from parent Commit
+
+git ls-tree HEAD^ ==> shows list of files/directories from grandparent commit
+
+git ls-tree HEAD pathOfFile ==> shows files/directories of the specified path from parent Commit
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Filter the commit log 
+---------------------
+
+git log -3 ==> shows recent 3 commits
+
+git log --since=2019-01-01 ==> shows commits since 2019-01-01
+
+git log --until=2021-01-01 ==> shows commits until 2021-01-01
+
+git log --until="3 days ago" 
+
+git log --after=2.week --before=3.days
+
+git log --author="authorname"
+
+git log filename ==> filter by filename
+
+git log directory ==> filter by directory
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+format the commit log 
+----------------------
+
+git log -p ==> shows path/ changes[all commits](p stands for patch), actual changes
+
+git log --stat ==> show statistics of change, does not show actual change
+
+git log --format=specifyFormat 
+
+format to specify 
+
+1.oneline 
+2.short 
+3.medium(default)
+4.full
+5.fuller
+6.email
+7.raw
+
+git log --oneline ==> shows one line commit 
+
+git log --graph ==> shows graph of branch commit
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+####################
+#Branching overview#
+####################
+its cheap
+
+master branch 
+	|
+	|
+	|_________new branch
+	
+	
+create new branch
+------------------
+
+git branch newBranchName ==> create new branch
+
+git branch newBranchName branchNamefromWantToCreateABranch ==> create a new branch from the specified branch
+
+switch branch
+--------------	
+
+git checkout nameoftheBranch ==> switch the branch to new branch
+
+create and switch the branch
+----------------------------
+
+git checkout -b nameofnewBranchwanttocreate ==> will create new branch and will switch to that branch
+
+git checkout -b nameofnewBranchwanttocreate startingpointofbranch ==> will create a new branch from specified starting point of branch
+
+
+switching with uncommited changes
+---------------------------------
+
+option -- 1.commit
+		  2.remove
+		  3.stash
+
+compare branches
+----------------
+
+git diff master..nameofbranch ==> shows diff between two branches
+
+git diff --color-words olderbranch...nameofbranch
+
+git diff --color-words olderbranch...nameofbranch^
+
+git diff --color-words olderbranch...nameofbranch^^
+
+git branch --merged ==> goes backword the commit tree 
+e.g.,
+
+1st commit 
+	^
+	|
+	|
+2 nd commit 
+	^
+	|
+3rd commit (current branch)
+
+e.g.,
+
+1st commit(shows backword tip of 2nd commit)
+	^
+	|
+2nd commit(current branch)
+
+
+git branch --no-merged ==> shows no merged branch
+
+1st commit
+	^
+	|
+2nd commit(current branch) 
+output ==> shows 3rd branch as not merged/included
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+rename branch
+-------------
+
+git branch -m oldname newnameofbranch ==> rename the branch name 
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+delete branch
+-------------
+
+git branch -d nameofbranchwanttodeletebranch ==> delete the branch
+
+git branch -D nameofbranchwanttodeletebranch ==> delete the branch which is having commits/not commit the changes
+
+----------------------------------------------------------------------------------------------------------------------------------
+################
+#Reset Branches#
+################
+
+Type: Soft, Mixed, Hard 
+
+*Soft reset (rollback the commit and put files in staging area)
+
+Move haeder pointer 
+does not change staging index 
+does not change working directory
+
+e.g., git reset --soft <tree-ish>
+
+use --> returns to an old state and leave code changes staged
+		useful for amending one or more commit
+		similar to git commit --amend
+		previous commmit will be discarded
+		be careful about amending commits which have been shared
+		
+		
+*Mixed reset
+
+Move haeder pointer 
+change staging index to match repository
+does not change working directory
+
+e.g., git reset --mixed <tree-ish>
+
+#Default choice
+
+use --> returns to an old state and leave code changes in working directory(not in a staging)
+		useful to reorgnizing your commit
+		previous commmit will be discarded
+		be careful about amending commits which have been shared
+
+*Hard reset
+
+Move haeder pointer 
+change staging index to match repository
+change working directory to match repository
+
+e.g., git reset --hard <tree-ish>
+
+use -->return to an old state and discard all code changes
+	   useful to permanently undo commits
+	   Previous commits and all changes will be discarded
+	   be careful about amending commits which have been shared
+	   
+----------------------------------------------------------------------------------------------------------------------------------
+
+##############
+#Merge Branch#
+##############
+
+if want to merge into master branch then follow below steps:
+
+1.git checkout master ==> change the branch to master
+2.git merge branchwhichyouwanttomerge ==> merge the specified branch with the current branch(fast-forward)
+
+git branch --merged ==> shows which branches are merged
+
+types of merges
+----------------
+
+1. fast-forward merge
+		1st commit --> 2 nd commit --> 3rd commit(merge here )
+								\
+							3rd commit 
+		
+2. non fast-forward merge
+										
+		1st commit --> 2nd commit --> 4 th commit --> 5th commit
+								\		/
+							3rd commit 	
+
+
+Merge conflicts
+---------------
+
+why conflicts occurs?
+ans --> two different chnages in same file at same location
+
+Resolve merge conflicts
+-----------------------
+
+3 ways to resolve the conflicts
+
+1. abort the merge
+2. Resolve the conflicts manually
+3. use a merge tool
+
+1.abort the merge
+
+git merge --abort ==> help to abort the merge 
+
+2. Resolve the conflicts manually
+
+git diff --color-words branchToCompare..branchWithWantToCompare 
+
+git show --color-words 
+
+after resolving conflicts manually follow below steps
+
+i.git add filenames 
+ii. git commit ==> no need any message, it will go ahead and continue the merging process
+
+3. use merge tool
+
+
+
+Strategies to reduce conflicts
+------------------------------
+
+keep lines short
+keep commits small and focused
+Beawre stray edits to whitespaces(space, tabs, line returns )
+Merge often (to master/development branch)
+Track changes to master( pull changes of master to the working branch)
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+###############
+#Stash changes#
+###############
+
+save changes in the stash
+-------------------------
+special 4th area of Git ==> stash the changes
+
+git stash save "name in descriptive"
+stash does not include untracked files as its not conflicts as its new and its sitting in the working directory as it is
+
+if you want to include untracked files then you can use -u or --include-untracked option with the command
+
+git stash save -u "name" ==> save untracked files in stash
+
+view stash changes
+------------------
+
+git stash list ==> shows list of all stashed things
+
+git stash show stash@{id of stash} ==> shows the whats changes in the shashed for particular id of stash
+
+e.g.,
+git stash show stash@{0}
+
+git stash show -p stash@{id of stash} ==> shows exact content which are changes and moved to stash(p stand for patch)
+
+Retrieve stash changes
+----------------------
+
+git stash pop ==> retrieve single stash (recent one) and changes applied to working directory (remove from the stash memory)
+
+git stash pop stash@{id of stash} ==> retrieve specific stash and changes applied to working directory (remove from the stash memory)
+
+git stash apply ==> retrieve the stash, changes apply to working directory also stashed changes will not remove from stashed memory
+					you can see the stash changes using git stash list
+
+delete stashed changes
+----------------------
+git stash drop stash@{id of stash} ==> use to delete the stashed item (permanently delete).
+
+git stash clear ==> it clears everything (list of stash will be clear)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#################
+#Set up a Remote#
+#################
+
+git fetch ==> will synchorize origin/master with the remote. it also brings down any other information about other branches or tags or anythings has been added 
+			  to the remote repositories 
+			  
+git fetch origin ==> 
+
+
+git fetch + git merge == git pull ==> git pull does both steps of fetch and merge in once. 
+
+cat .git/config ==> shows config such as current branch of the repo, etc.
+
+
+delete remote branch
+---------------------
+
+2 ways 
+
+old way 
+
+git push origin :branchName ==> it will delete the specified remote branch (: represents to remove the branch)
+
+git push origin --delete branchName ==> helps to delete the specified remote branch 
+
+add alias for command 
+
+git config --global alias.st "status" ==> create alias for status 
+
+git st == git status
+
+we can edit git/config file directly 
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+###################
+#Branch Management#
+###################
+
+force push to a remote
+----------------------
+git push -f 
+
+git push --force
+
+
+identify merged branches
+------------------------
+git branch --merged ==> shows merged branch
+
+git branch --no-merged ==> shows not merged branch
+
+git branch -r --merged ==> shows remotely merged branches 
+
+git branch --merged HEAD ==> shows merge branch from the HEAD tip
+
+git branch --merged nameofbranch ==> shows merge branch from the name of the branch tip
+
+git branch --merged origin/branchName ==> can start with the remote version, shows merged branch from the remote version tip
+
+git branch --merged SHA ==> can use particular commit, shows no of other branch tips from the SHA
+
+
+delete local and remote branch
+------------------------------
+1. delete local branch
+
+to delete a particular branch, need to switch to other branch
+
+git branch -d branchNameWhichWantToRemove ==> will delete a branch which is specified
+
+#before deleting any branch need push all changes, otherwise git will object and ask to push or stash the changes
+
+git branch -D branchNameWhichWantToRemove ==> will delete a branch forcefully which is specified
+
+2. delete remote branch
+
+git push origin :branchName ==> will delete specified remote branch 
+
+git push --delete origin branchName ==> added this option from the version v1.7.0+, helps to delete specified remote branch
+
+git push --delete nameOfTheRemote(in our case origin is a remote name) branchName 
+
+git push -d origin branchName ==> added this option from the version v2.8.0+, helps to delete specified remote branch
+
+
+Prune stable branches
+---------------------
+
+Pruning is Delete all stale remote-tracking branches
+
+remote-tracking branches, not remote branches
+
+Stale Branch: a remote-tracking branch that no longer tracks anything because the actual branch in the remote repository has been deleted
+
+git remote prune origin
+
+git remote prune origin --dry-run ==> we can see what it would do before we actually let it do it.
+
+git fetch --prune ==> it will prune everything for you and then perform fetch for you.
+
+git fetch -p ==> it will prune everything for you and then perform fetch for you.
+
+#If you always want to prune before fetch, you can set it into configuration file using below command
+
+git config --global fetch.prune true ==> It always prune before fetches.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#########
+#Tagging#
+#########
+
+Create tags
+-----------
+
+Tags allow marking points in history as important
+a named reference to a commit
+Most often used to mark releases(v1.0, v1.1, v2.0)
+can mark key feature or changes(ecommerce, redesign)
+can mark points for team discussion(bug, issue 136) 
+
+there are two types of tag you can create
+1. lightweight tag
+
+git tag tagname SHAofCommit ==> create a tag for specified commit SHA
+e.g., git tag issue136 ahs238akjdn8
+
+2. annotated tag(most common)
+
+git tag -a tagname -m "specify message" SHAofCommit ==> create a tag for specified commit SHA with message
+														-a specifies annotated tag and -m to provide message
+														
+git tag -am "Message want to specify" nameofTag SHA ==> create a tag for specified commit SHA with message
+														-a specifies annotated tag and -m to provide message
+														
+e.g.,
+git tag -a v1.1 -m "Version 1.0" hisad3y8sakd
+
+
+-a and -m can be combine so its just -am if we were to leave off the -m and the message that follows then git would open up our preferred text 
+editor so that we can provide a message there just like it does with commits 
+
+if we were to leave off the -a option but include -m, then git would assume that we must mean to add an annotated tag its getting an annotation,
+but its a good habbit to go ahead and provide that -a and -m both because its clearer and also that default behavior might change in the future.
+
+for both type of tags both lightweight and annotated, if we ommit the commit SHA then git would automatically use the current head by default.
+
+
+List tags
+----------
+
+git tag ==> shows list of tags
+
+git tag --list ==> shows list of tags
+
+git tag --l ==> shows list of tags
+
+we can filter list of tag by providing a string inside double quotes
+
+e.g., git tag -l "v2*" ==> will show the list of tags which begins with v2 e.g., v2.0, v2.1, v2.0.0, etc.
+
+#Note -l is required while filtering otherwise git would will trying to add a tag with specified name.
+
+git tag -l -n ==> list of the tags with annotation(with message)
+
+git tag -ln ==> list of the tags with annotation(with message)
+
+work with tags (similar to commits )
+--------------
+git show tagName ==> shows a tag for specified name
+
+git diff tagName1..tagName2 ==> shows diff between two different tags  
+
+
+Delete tags (local)
+-------------------
+
+git tag --delete tagName ==> helps to delete the tag which is specified
+
+git tag -d tagName ==> helps to delete the tag which is specified
+
+Delete tags (remote)
+--------------------
+
+git push origin :tagName ==> helps to delete the tag from the remote server, like remote branches
+
+git push --delete origin tagName ==> helps to delete the tag from the remote server, like remote branches
+
+git push -d origin tagName ==> helps to delete the tag from the remote server, like remote branches
+
+
+push tags to a remote
+---------------------
+
+like branches, tags are local unless shared to a remote
+git push does not transfer tags
+Tags must be explicitly trasferred 
+git fetch automatically retrieves shared tags (from the remote)
+
+git push origin tagName ==> push a specific tag to the remote(similar to the push branch to remote)
+
+git push origin --tags ==> push all tags to the remote server 
+
+
+fetch commits and tags
+----------------------
+
+git fetch ==> its going to automatically get all of the shared tags on the remote server with the commits 
+
+git fetch --tags ==> this command helps if you only wants to get the tags thats are shared on the remote servers, with the necessary
+					 commits associated with them,
+					 
+
+Check out tags
+--------------
+
+Tags are same thing like branches 
+Tags can be checked out, just like any commit
+correct way to checked out the Tag is to create a branch from it 
+
+git checkout -b newBranchName tagName ==> use to checkout a tag 
+
+git checkout tagName ==> use to checkout a tag 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#####################
+#Interactive staging#
+#####################
+
+Interactive mode
+-----------------
+
+interactive staging is the ability to stage changes that we want to commit, integritely.
+Normally, you would do that from the command line. you would just simply pick a file that you wanted to and you would add it and would be 
+sitting in your staging area, waiting for you to make a commit.
+Instead, we are going to be able to enter an interface that allows us to move files in and out of the staging area, and most importantly,
+allows us to stage portions of changed files. 
+Thats nice feature that helps you to make smaller, more focused commits.
+Its also a feature of many of the popular GIT GUI tools, 
+in those tools, you can select a few lines and stage only those lines, rather than staging an entire file at a time.
+its popular feature, but you dont have to go to a third party tool in order to get it 
+its a feature thats built into the GIT.
+
+The way that you enter the interactive staging mode is 
+
+git add --interactive  ==> helps to enable interactive mode
+		OR
+git add -i ==> enable interactive mode
+
+Patch Mode
+----------
+
+Allows staging only portions of the changed files.
+before when we were doing add from the command line or from the interactive mode when we use update, we were staging an entire file.
+patch mode allows us to just stage portions of the changes file.
+Now, if there are portions to be changed, it assumes that we have multiple changes inside the same file, and git is going to decide how to 
+break up those chnages into portions. 
+those portions are going to be referred to as hunks.
+A hunk is simply an area where two files differ.
+now its not just a single line change, and sometimes it can seem arbitary about how Gits puts together what if we consider a hunk of changes,
+but hunks can either be staged, skipped over, or split into smaller hunks 
+
+follow below steps to apply patch mode
+
+1.git add -i 
+2.select option 5 or p 
+
+now you are in a patch mode   
+
+path mode we can use in interactive mode and in other way too.
+
+git add -p 
+git add -p filename
+git add --patch
+git stash -p 
+git reset -p 
+git commit -p
+git checkout -p , etc.
+
+Split a hunk
+------------
+
+Hunks can contain multiple changes and it can seem sometimes arbitary how git decides which changes get put into each hunk
+sometimes we want those changes to be split up so that we can stage only a portion of that hunk
+and in that case, we need to split them. we need to tell GIT to try to split a hunk into further pieces.
+And Gits capable of doing that.in order to that there is one important caveat: they must be one or more unchanged lines between the changes
+otherwise Git wont be able to do it on its own. 
+
+steps to follow to split into hunks as below:
+
+1.git add -i 
+2.select option 5 or p 
+3.select s for smaller hunks
+4.select y or n for particular hunks which is shown by GIT.
+
+
+Edit a hunk
+-----------
+
+can edit a hunk manually
+its most useful whan a hunk can not be split automatically.
+the way we will perform our edits is by going into the file and modifying the diff that's there.
+the Diff normally shows the style line prefixes: +,-,#,space in front of the line 
+ 
+steps to follow to edit hunk manually as below:
+
+1.git add -i 
+2.select option 5 or p 
+3.select s for smaller hunks
+4.select e option to edit manually the current hunk
+5.open up the file in text editor.
+6.change the file as require(use below commented lines to edit the file).
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+########################
+#Share selected changes#
+########################
+
+cherry-picking commits
+----------------------
+cherry-picking means that we apply the changes from one or more existing commits. each commit that we target is going to become a new commit 
+on the current branch.
+we are essentially telling git, hey go get that commit that you already know about, grab its changes and apply them right here.
+its conceptually similar to doing a copy and paste. One reason that its not exactly same as copy and paste though is that the histories
+of each one are different,and therefore new commits are going to have different SHAs.
+SHA created based on the content of the commit, the changes that are being made, as well as all of the metadata, and the parent commit as well,
+and since this commit is going to have different metadata and different parent commit, its not going to have same SHA.
+ 
+git cherry-pick SHA ==> apply mentioned SHA into the branch
+
+git cherry-pick rangeOftheSHA ==> apply range of the SHA into the branch
+
+you can cherry-pick commits from any branch that you have visible to you and even from things that are on the remote. 
+what you can not do is cherry-pick a merge commit, because a merge commit is merging together two other sets of commits. Thats its purpose.
+if we try to cherry-pick it, then git would not know which one of those parent that it was joining should be brought into the current branch.
+we actually have two branches being merged, and we dont. we only have one branch, the current branch that we're on.
+
+you also can provide --edit or -e to edit commit message when you are doing cherry-picking to allow you to edit the commit message.
+by default, it will use the same commit message as a convenience, but you have the opportunity to edit it if you want it to be something
+different.
+
+it will still keep the same change set, but the commit message does not have to be the same.
+
+Cherry-picking can result in a conflicts which must be resolved just like merge conflicts.
+
+
+remove cherry-picking conflicts
+--------------------------------
+steps to follow to resolve conflicts
+
+1.git cherry-pick SHA
+2.resolve conflicts 
+3.git add filename 
+4.git cherry-pick --continue
+
+create diff patch
+-----------------
+
+diff patches are a way for us to be able to share changes using files,instead of transferring them via a "get remote repository"
+this is useful when changes are not ready for public branch so we dont wanna push it up towards the remote repository,or when we want 
+to work with collaborators who dont share a remote with us.
+This often use during a discussion, review, or an approval process.
+The idea is just to package up changes into files and then those files can either be emailed or put into a thumb drive or something to be 
+shared with someone else.
+Before we can learn how to create a diff file,we first should review how can take the output from the command on command line and send it to
+a file.
+
+echo "hello" >> hello.text ==> Direct output to a file.
+
+git diff from-commit to-commit >> filename.diff ==> create a diff patch mentioned from from-commit to to-commit
+
+e.g., git diff SHA SHA  
+	  git diff SHA 			# if to SHA does not mentioned then by default it consider head
+	  
+
+Apply diff patch
+----------------
+
+when we apply diff patch, what we are doing is we are apply the changes that are written in the diff format inside the patch file and apply
+them to our working directory.
+That is that make changes for us but it does not automatically commit them. and that make sense because if you remember that diff files does
+not have any commit history in it,so we dont know what are the original commits were. we dont know the SHA's, we dont know the commit message
+All we are getting is set of changes.
+so it just take those changes and puts those into working directory and its upto us to commit them
+
+git apply diffFileName.diff ==> help to apply diff to working directory.
+
+#Note: A patch can only apply if your working directory is in a state that allows it to work. it does not have to match everything exactly.
+there can be plenty of files that dont conflicts but anything that conflicts, anything that keeps it from matching up exactly is going to 
+prevent the patch from applying cleanly.
+
+Create formatted patches
+------------------------
+when we create formatted patch, we are telling GIT is that should export the each commit in the Unix mailbox format.
+Why use of this Unix mailbox format?
+well, its the standard format that it uses because its useful for email distribution of changes.
+There are some setups where every time you make a commit to a repository, it automatically emails out those changes to other people on a
+distribution list. so that they're aware of those changes as well. The most important feature for us though is that this Unix mailbox format
+is going to included a diff just like we saw before. Thats the standard git way of talking about changesets.
+But its also going to include commit messages and some of that metadata about the commit
+When we create formatted patches, its going to put one commit in a single file by default.so if we have five commits that we are creating
+we going to end up with five files being exported 
+
+git format-patch from-commit to-commit ==> export all commits in the range from from-commit to to-commit in Unix mailbox format
+
+e.g., git format-patch 2131shak yd8wndk 
+
+difference between normal patch and formatted patch is format-patch is going to create individual files for each one of those commits.
+
+git format-patch master ==> export all the commits on current branch which are not in master branch
+
+# if to SHA does not mentioned then by default it consider head
+
+git format-patch -1 SHA ==> export a single commit 
+
+git format-patch master -o directoryName ==> put patch files into a directory ( if we have large number of changes like 20 files then it will
+											 create 20 diffrent files so we can put them into single directory)
+											 if directory does not exist, then it will create a new directory 
+
+git format-patch SHA..SHA --stdout > fileName.patch ==> Output patches as a single file.
+
+
+Apply formatted patches
+-----------------------
+
+when we are applying formatted patch, what git is going to do is to extract the author, the commit message, and the changes from the mailbox
+message and apply them to the current branch and apply them to the current branch
+it is similarly cherry-picking: we are going to get same changes that was in the other repository but we may get different SHA's 
+biggest difference between formatted patch and diff patch is that the commit history is inside the patch and therefore can be transferred 
+when the patch is applied in formatted patch.
+
+git am LocationOfFormattedPatchFileName.patch ==> apply single patch( am stands apply mailbox)
+
+git am Location/*.patch ==> apply all patches in a directory
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+##########
+#Rebasing#
+##########
+
+Rebase Commits
+--------------
+its an intermediate technique for managing and incorporating changes between two branches.
+when we say rebase commits,what we mean is that we take commits from one branch, and we replay those commits at the end of the another branch
+This is useful for integrating recent commits without having to perform merge.
+Thats gives us a cleaner and more linear project history.
+it makes the history of our project more readable, and it makes it easier for us to track down the bugs.
+if we are working with a team of developers, it also ensures that each developers topic or feature branch commit will apply cleanly back to 
+the master branch.
+it forces each developer to take responsibilty, and make sure that there wont be unneccessary merging or merge conflicts that have to be
+resolved.
+For this reasons, for large teams actually require rebasing for any topic or feature branch before it can be considered for incorporation
+into the master branch.
+
+
+#refer rebase visualization in detail.png
+
+when we say that we want to rebase the commits a new_feature, what git does
+
+image 1. we have new_feature branch and want to rebase that branch
+ 
+image 2. its start rewinding the new_feature branch, or picking up each one of those commits and putting them into temporary storage.
+		 (in 2nd image, put the latest SHA and put into temporary storage)
+
+image 3. and it keeps doing that until it gets back to a commit where it diverged from the master branch.
+		 (in 3rd image, put the 2nd latest SHA and put into temporary storage) and so on.
+
+image 4. Then, it moves to the tip of the master branch, and replay each one of those commits 
+		 (In 4th image, replay the latest commit moved in the temporary storage)
+
+image 5. 
+		 (In 5th image, replay the 2nd latest commit moved in the temporary storage) and so on.
+
+image 6. after rebase image.
+ 
+
+git rebase master ==> rebase current branch to tip of master.
+
+git rebase master nameOfBranchWhichYouWantToRebase ==> rebase the specified branch to the tip of master.
+
+
+Perform a rebase
+----------------
+git rebase master ==> rebase current branch to tip of master.
+
+git rebase master nameOfBranchWhichYouWantToRebase ==> rebase the specified branch to the tip of master.
+
+Merging Vs. Rebasing
+--------------------
+#refer image difference between merge and rebase visualization
+
+when should merge and when should rebase? -> refer image How to choose between Merge and Rebase.png
+
+1. Merging 
+
+-> Adds a merge commit
+-> Nondestructive
+-> Complete record of what happened and when it happened
+-> easy to undo (can do hard reset to undo the merge)
+-> logs can become cluttered, non-linear
+
+
+2. Rebasing 
+
+-> No additional merge commit
+-> Destructive : SHA changes, commits are rewritten
+-> No longer a complete record of what happened and when it was happened
+-> Tricky to undo
+-> Logs are much cleaner, more linear
+
+#Note : rebasing should be used on your local, private branch, getting all collaborators back in sync can be nightmare and collaborators 
+		would see the project history vanish.
+		
+
+Resolve rebase conflicts
+------------------------
+git rebase --continue ==> continue option says I have resolve this conflict,go ahead and commit it and then go to next commit and keep going
+						  down the chain of commits that are waiting to be rebased.
+						  
+						  if conflicts occurs in any file, we have to resolve those conflicts and add that file using
+								git add fileName
+						  and then use command 
+								git rebase --continue
+						  we dont have to commit anything because remember it already has commit information. it has a commit message even
+						  after saying git rebase --continue, it apply that patch and then it applies next one.
+						  
+git rebase --skip ==> Skip says throw out this current commit, I dont want to rebase this one, but I do want to keep going with rest of 
+					  the commits in the chain. 
+
+git rebase --abort ==> Stop rebase altogether using abort option.
+
+Rebase onto other branches 
+--------------------------
+
+we can actually move any branch to other branch tip as well. we can move rebase branch1 onto the branch2 rather than master as well.
+
+git rebase --onto branchName upstream branch ==> rebase branch the on to the specified branch name
+
+git rebase --onto master camping expenses
+
+# refer the image rebase onto the other branch visualization
+
+undo the rebase e.g.,
+
+git rebase --onto camping master expenses 
+
+Undo rebase
+-----------
+
+git reset --hard ORIG_HEAD ==> undo, unless ORIG_HEAD has changed again.
+
+git reset --onto SHA master branchName ==> undo by rebasing to former-base SHA.
+
+undo the rebase e.g.,
+
+git rebase --onto camping master expenses 
+				OR
+git rebase --onto SHAOfCamping master expenses 
+
+
+interactive rebase
+------------------
+
+interactive rebasing gives us a chance to modify the commits as they are being replayed. What is actually does, is when we do a rebase,
+instead of just going about and doing the rebase on its own, Git will stop and make a to-do list of the things its going to do during the 
+rebase, and then it will pause and it will gives us a chance to edit that to-do file.
+When we do that,we can reorder the commits, or tell it to skip some commits, or we can go and we can edit the commit contents. 
+Essentially, its saying, Git, tell me what you plan to do, and let me give you input on how you go about that task.
+
+Interactive rebase choices 
+
+1. pick, drop  --> you can pick a commit, which means that we are going to use it, or you can drop a commit, means that it wont get used.
+				   it will simply get skipped when it goes to do rebase 
+2. reword, edit --> we can tell we want to use it, but we want to stop and reword the commit message, or edit, or amend, the content of the
+					commit.
+3. squash, fixup --> allow us to take different commits and squash them together into one.
+
+4. exec --> short for execute, this runs a command from the command line shell.					
+
+git rebase -i master branchName ==> to rebase using interactive mode use -i.
+
+follow below steps to rebase using interactive mode 
+
+1. use command git rebase -i master branchName
+2. git will open default code editor and will show you commits in it.
+3. we can modify the rebase options when editor opens up. e.g., pick SHA CommitMessage , we can change pick to reword to edit commit message
+   so the command will be look like reword SHA CommitMessage and save the file and now it pops up a new editor window in which we can edit 
+   the commit message. similar for other options.
+   
+git rebase -i HEAD~3 ==> Rebase last 3 commits onto the same branch but with the opportunity to modify them, Now remember, that this is 
+						 destructive. This technique is useful if want to clean up some commits that you just made locally, and haven't 
+						 shared with anyone else yet.
+						 But its not a good idea to clean up commits that are already public, on a shared repository, where collaborators 
+						 may be using them. 
+						 
+Squash Commit
+-------------
+
+Squashing commits means fold two or more commits into one.
+Squash a commit means we want to combine its change set with the change set that comes right before it in the list. we also want to concatenate 
+together the commit messages.
+we will also have an opportunity to edit those messages that will take both of the existing messages, concatenate them together and present 
+them to us.
+Fixup is a variation on squash.
+Does the exact same thing except that it discard this commit message.
+We know we dont want to use it in the final commit message so we are just going to throw it out altogether.
+if commits have more than one author, then squash is going to use the first author listed in the commit series so you wanna make sure that 
+the first commit that you have listed is the author that you want.
+
+Squash commit using below steps:
+
+1. use command git rebase -i HEAD~3
+2. git will open default code editor and will show you commits in it.
+3. we can modify the rebase options when editor opens up. e.g., pick SHA CommitMessage , we can change pick to squash to squash commits 
+   so the command will be look like Squash SHA CommitMessage and save the file, similar for fixup option. and now it pops up a new editor
+   window in which we can edit the commit message too. 
+   for fixup --> the commit message will be skipped.
+
+#note: these commits not shared with anyone, these commits are locally.
+
+Pull rebase
+-----------
+
+Another way that we can make use of rebasing is by combining it with pull.
+Normally, when we do git pull, we are fetching we are fetching from a remote server, and then we merge in the result with our local code.
+With pull rebase, we are going to fetch from the remote, but then we are going to do a rebase instead of merging.
+The reason why? its going to keep our history much cleaner by reducing all of those little merge commits that get created
+Now as will all rebasing, we only want to do this if we are working with local commits that have not yet been shared to a remote.
+
+#Refer image pull rebase visualization 
+
+image 1. it shows that remote and local branches are in sync and local branch is upto date.
+image 2. now user has created a new branch from the commit f36de 
+image 3. collaborators has pushed the changes on the remote repository hence HEAD pointer move to updated commit as shown in the image.
+image 4. to pull rebase, user has to fetch those commits into the local branch as shown in the image.
+image 5. and rebase the branch to updated master branch (we tell git that pick up that commits and re-commit it after the changes that 
+		 have just been brought down from git fetch)
+
+git pull --rebase ==> 
+
+git pull -r ==>
+
+git pull --rebase=preserve ==> preserve option means preserve locally created merge commits and not flatten them. In other words, if commits
+							   that you are rebasing includes some merge commits, then you probably want to use preserve. 
+
+git pull --rebase=interactive ==> interactive option puts user in the interactive mode, using this option we can pick, reorder, edit,
+								  squash the commits.
+								  
+steps to follow to pull rebase
+
+1. git fetch 
+2. git pull --rebase
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#####################
+#Track Down Problems#
+#####################
+
+
+Log options
+-----------
+Log is the primary interface to GIT. Gits job is to keep track of changes over time,and the log list those changes over the time.
+Log has many options with it.
+we can use Sorting, Filtering, output formatting and more.
+
+git help log ==> shows all the options with log 
+
+git log -L fromLineNumber,ToLineNumber:FileName ==> shows edits to lines which are specified range for specified fileName.
+
+
+Blame
+-----
+Blame allows us to browse an annotated version of the file.The reason you would do that its allows you to determine who changed which lines 
+in the file and why. In other words, who wrote this code or who should I blame, thats where it gets name.
+it can be useful for probing the history behind a file's current contents. and its useful for identifying which commit in particular introduce
+a bug.
+
+git blame fileName ==> Annotated file with commit details.
+
+git blame -w fileName ==> -w stands for Ignore White spaces.
+
+git blame -L fromLineNumber,ToLineNumber FileName ==> Annotated lines range 
+
+git blame -L fromLineNumber,+NumberOfLines FileName ==> Annotated lines fromLineNumber to the number of lines which specified
+
+e.g., git blame -L 100,+10 FileName ==> Annotated lines from 100 to 110.
+
+git blame SHA fileName ==> Annotated file at revision for specified SHA.
+
+git blame SHA -- fileName ==> Annotated file at revision for specified SHA.
+
+git annotated FileName ==> it just has slightly different format, it will show Annotated file with commit details with different format.
+
+
+Bisect
+------
+tool for debugging called Bisect.
+Bisect allows us to find the commits that introduced a problem to our code, either a bug or regression.
+We use Bisect when we know that there's a problem in a particular version and we know that there didn't use to be that problem.
+We want Git to help us identify which commit between the good version and the bad version created the issue. so you will tell Bisect the 
+last known good revision and you will tell it the first known bad revision. And then Bisect will automate a process to help you figure out
+where in between those did things go wrong.
+It does that by resetting the code to the midpoint so we have essentially checked out a version of the code thats in between the two and
+we are going to check there and see are things good or bad.
+And its going to your job to test. you will poke around in the files. May be you want to review the project in a browser, or may be you
+have a test suite of code that you want to run to see whether the tests pass or fail.
+Once we know whether the revision thats right at the midpoint is good or bad we will mark it for Bisect so that it knows. And then it will
+repeat the process using one of the havles of the search space. So if we have maked it as being good revision, then this will now become
+the last known good revision. Or if marked the midpoint as being a bad revision, this will be the first known bad revision.
+And it will know to search either forward or backwards based on that. 
+
+git bisect start ==> it will start bisect sessions.
+
+then we have to tell git which one is good and bad versions.
+
+git bisect bad <tree-ish> ==> tree-ish can be a branch name, SHA, tag or just left blank and it will be the current pointer for head.
+
+then we can do same thing for good version.
+
+git bisect good <tree-ish> ==> tree-ish can be a branch name, SHA, tag or just left blank and it will be the current pointer for head.
+
+git bisect reset ==> it will reset your working directory back to the head that you were at before you started bisecting.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
