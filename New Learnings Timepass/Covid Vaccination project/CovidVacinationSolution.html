@@ -1,0 +1,47 @@
+<html>
+<head>
+<style>
+body{
+	background-color: white;
+<!--text-align: center;-->
+}
+h2.firstPre{
+	color:green; 
+	text-align:center; 
+	background-color: lightgrey; 
+	padding:10px;
+	border: 80px solid black; 
+}
+pre.secondPre{
+	box-sizing: border-box; 
+    width: 100%; 
+    float: left; 
+    align-content: center; 
+    align-items: center; 
+	background:#fbb1bd;
+	padding: 10 px;
+	display: block;
+}
+img{
+	position:center;
+}
+</style>
+</head>
+<body>
+<script src="CovidVaccinationSolution.js"></script>
+
+<h2 class="firstPre">Welcome to Covid Vaccination center.</h2>
+<div>
+<pre class="secondPre">
+<label> First Name : </label> <input type="text" id="firstName" name="FirstName"> </br>
+<label> last Name  : </label> <input type="text" id="lastName" name="LastName"> </br>
+<input type="radio" id="male" name="gender" value="male"> <label for="male">Male </label><input type="radio" id="female" name="gender" value="female"> <label for="female">Female </label><input type="radio" id="other" name="gender" value="other"> <label for="other">Others </label><br>
+<label> Aadhar Number  : </label> <input type="text"  class="aadhar" id="aadharNumber" name="aadharNo"> </br>
+<label> Phone/Mobile Number  : </label> <input type="text"  class="phone" id="phoneNumber" name="phoneNo"> </br>
+<label> E-mail Address  : </label> <input type="email"  class="email" id="emailAddress" name="emailAdd"> </br>
+<label>Choose Date and Time : <input type="datetime-local" id="meeting-time" name="meeting-time" value="2021-01-10T11:30" min="2021-02-10T00:00"> </br>
+<button type="button" onclick="addConsumerData(); return false;">Add Consumer Data</button>     <button type="button" onclick="clearDt();">Cancel</button>
+</pre>
+</div>
+</body>
+</html>
